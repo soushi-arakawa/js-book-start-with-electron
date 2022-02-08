@@ -7,15 +7,25 @@ function createWindow() {
   })
   win.loadFile('index.html')
 
-  let child = new BrowserWindow({
+  let child1 = new BrowserWindow({
     width: 350,
     height: 200,
     parent: win,
     frame: false,
-    modal: true
+    transparent: true
   })
 
-  child.loadFile('sub.html')
+  child1.loadFile('sub.html')
+
+  let child2 = new BrowserWindow({
+    width: 350,
+    height: 200,
+    parent: win,
+    frame: false,
+    opacity: 0.5
+  })
+
+  child2.loadFile('sub.html')
 }
 
 app.whenReady().then(createWindow)
