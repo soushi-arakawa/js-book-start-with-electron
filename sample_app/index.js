@@ -1,14 +1,19 @@
 const { app, Menu, MenuItem, BrowserWindow } = require('electron')
+const { ipcMain } = require('electron')
+const path = require('path')
 
 function createWindow() {
   let win = new BrowserWindow({
-    width: 400,
-    height: 300,
+    width: 600,
+    height: 400,
     webPreferences: {
-      nodeINtegration: true
+      enableRemoteModule: true,
+      preload: path.join(app.getAppPath(), 'preload.js')
     }
   })
   win.loadFile('index.html')
+  win.webContents.openDevTools()
+  return win.id
 }
 
 function createMenu() {

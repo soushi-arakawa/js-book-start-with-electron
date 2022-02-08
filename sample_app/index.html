@@ -14,7 +14,21 @@
         <h1 class="display-4 text-light">Sample-app</h1>
     </nav>
     <div class="container mt-4">
-        <p>This is sample application!</p>
+        <p id="msg">please click button</p>
+        <p>
+            <textarea class="form-control" id="ta"></textarea>
+        </p>
+        <button class="btn btn-primary" onclick="doit()">
+            Click
+        </button>
     </div>
+    <script>
+    function doit() {
+        let fname = 'sample.txt'
+        re = fs.readFileSync(fname).toString()
+        document.querySelector('#ta').value = re
+        alert('テキストファイルを読み込みました。')
+    }
+    </script>
 </body>
 </html>
