@@ -16,10 +16,15 @@ function createMenu() {
     {
       label: 'File',
       submenu: [
-        {label: 'New'},
+        {label: 'New', click: () => {
+          console.log('New menu.')
+        }},
         {label: 'File'},
         {type: 'separator'},
-        {label: 'Quit'}
+        {label: 'Quit', click: () => {
+          console.log('Quit menu')
+          app.quit()
+        }}
       ]
     },
     {
