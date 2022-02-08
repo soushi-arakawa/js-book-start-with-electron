@@ -2,13 +2,14 @@ const { app, BrowserWindow } = require('electron')
 
 function createWindow() {
   let win = new BrowserWindow({
-    width: 400,
-    height: 200,
+    width: 800,
+    height: 500,
+    backgroundColor: '#660066',
     webPreferences: {
       nodeINtegration: true
     }
   })
-  win.loadFile('index.html')
+  win.loadURL('https://www.tuyano.com')
 }
 
 app.whenReady().then(createWindow)
