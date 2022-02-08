@@ -24,19 +24,21 @@ function createMenu() {
           console.log('File menu.')
           createWindow()
         }},
+        {role: 'close'},
         {type: 'separator'},
-        {label: 'Quit', click: () => {
-          console.log('Quit menu')
-          app.quit()
-        }}
+        {role: 'quit'},
       ]
     },
+    {role: 'editMenu'},
+    {role: 'viewMenu'},
+    {role: 'windowMenu'},
     {
-      label: 'Edit',
+      label: 'Help',
       submenu: [
-        {role: 'cut'},
-        {role: 'copy'},
-        {role: 'paste'}
+        {role: 'about'},
+        {type: 'separator'},
+        {role: 'zoomIn'},
+        {role: 'zoomOut'}
       ]
     }
   ]
