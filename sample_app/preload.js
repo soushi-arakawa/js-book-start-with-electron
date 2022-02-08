@@ -1,9 +1,10 @@
-const { remote } = require('electron')
-const { dialog } = remote
-const { ipcRenderer } = require('electron')
+const { contextBridge, ipcRenderer } = require('electron')
 const fs = require('fs')
 
-window.remote = remote
-window.dialog = dialog
-window.ipcRenderer = ipcRenderer
-window.fs = fs
+contextBridge.exposeInMainWorld(
+  'ipcMain', 
+  {
+    dialog: () => require('dialog'),
+    fs: () => require('fs')
+  }
+)

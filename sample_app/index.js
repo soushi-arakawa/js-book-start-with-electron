@@ -7,7 +7,6 @@ function createWindow() {
     width: 600,
     height: 400,
     webPreferences: {
-      enableRemoteModule: true,
       preload: path.join(app.getAppPath(), 'preload.js')
     }
   })
