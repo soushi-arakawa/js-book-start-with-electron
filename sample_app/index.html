@@ -25,9 +25,10 @@
     <script>
     function doit() {
         const fname = 'sample.txt'
-        const re = window.ipcMain.fs().readFile(fname, 'utf8', (error, result) => {
-            if (error) {
-                window.ipcMain.dialog().showErrorBox(error.code + error.errno, error.message)
+        const re = window.ipcMain.fs().readFile(fname, 'utf8', (err, result) => {
+            if (err) {
+                console.log(err.errno)
+                window.ipcMain.showErrorMessage('', err.message)
                 return
             }
             let data = result.toString()

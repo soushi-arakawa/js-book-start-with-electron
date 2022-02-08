@@ -1,4 +1,4 @@
-const { app, Menu, MenuItem, BrowserWindow } = require('electron')
+const { app, Menu, MenuItem, dialog, BrowserWindow } = require('electron')
 const { ipcMain } = require('electron')
 const path = require('path')
 
@@ -59,4 +59,9 @@ app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit()
   }
+})
+
+ipcMain.handle('showErrorMessage', (event, title, message) => {
+  console.log(`title: ${title}, message: ${message}`)
+  dialog.showErrorBox(title, message)
 })
