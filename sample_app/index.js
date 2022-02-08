@@ -12,27 +12,26 @@ function createWindow() {
 }
 
 function createMenu() {
-  let menu = new Menu()
-
-  let file = new MenuItem({
-    label: 'File',
-    submenu:[
-      new MenuItem({ label: 'New' }),
-      new MenuItem({ label: 'File' }),
-      new MenuItem({ label: 'Quit'})
-    ]
-  })
-  menu.append(file)
-
-  let edit = new MenuItem({
-    label: 'Edit',
-    submenu: [
-      new MenuItem({ label: 'Cut' }),
-      new MenuItem({ label: 'Copy' }),
-      new MenuItem({ label: 'Paste' })
-    ]
-  })
-  menu.append(edit)
+  let menu_temp = [
+    {
+      label: 'File',
+      submenu: [
+        {label: 'New'},
+        {label: 'File'},
+        {type: 'separator'},
+        {label: 'Quit'}
+      ]
+    },
+    {
+      label: 'Edit',
+      submenu: [
+        {label: 'Cut'},
+        {label: 'Copy'},
+        {label: 'Paste'}
+      ]
+    }
+  ]
+  let menu = Menu.buildFromTemplate(menu_temp)
 
   Menu.setApplicationMenu(menu)
 }
