@@ -1,19 +1,9 @@
 const { app, BrowserWindow } = require('electron')
 
-const html = '<html><head>'
-+ '<title>HTML STRING</title>'
-+ '</head><body>'
-+ '<h1>HTML STRING</h1>'
-+ '<p>This is string content.</p>'
-+ '</body></html>'
-
 function createWindow() {
   let win = new BrowserWindow({
-    width: 400,
-    height: 300,
-    webPreferences: {
-      nodeINtegration: true
-    }
+    width: 500,
+    height: 400,
   })
   win.loadFile('index.html')
 
@@ -21,12 +11,11 @@ function createWindow() {
     width: 350,
     height: 200,
     parent: win,
-    webPreferences: {
-      nodeIntegration: true
-    }
+    frame: false,
+    modal: true
   })
 
-  child.loadURL('data:text/html;charset=utf-8,' + html)
+  child.loadFile('sub.html')
 }
 
 app.whenReady().then(createWindow)
