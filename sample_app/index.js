@@ -14,6 +14,10 @@ function createWindow() {
 
 app.whenReady().then(createWindow)
 
+app.on('will-finish-launching', () => {
+  console.log('will-finish-launching')
+})
+
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit()
