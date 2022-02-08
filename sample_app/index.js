@@ -1,5 +1,12 @@
 const { app, BrowserWindow } = require('electron')
 
+const html = '<html><head>'
++ '<title>HTML STRING</title>'
++ '</head><body>'
++ '<h1>HTML STRING</h1>'
++ '<p>This is string content.</p>'
++ '</body></html>'
+
 function createWindow() {
   let win = new BrowserWindow({
     width: 400,
@@ -8,7 +15,7 @@ function createWindow() {
       nodeINtegration: true
     }
   })
-  win.loadFile('index.html')
+  win.loadURL('data:text/html;charset=utf-8,' + html)
 }
 
 app.whenReady().then(createWindow)
