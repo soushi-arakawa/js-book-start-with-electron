@@ -3,7 +3,7 @@ const { app, Menu, MenuItem, BrowserWindow } = require('electron')
 function createWindow() {
   let win = new BrowserWindow({
     width: 400,
-    height: 200,
+    height: 300,
     webPreferences: {
       nodeINtegration: true
     }
@@ -18,8 +18,12 @@ function createMenu() {
       submenu: [
         {label: 'New', click: () => {
           console.log('New menu.')
+          createWindow()
         }},
-        {label: 'File'},
+        {label: 'File', click: () => {
+          console.log('File menu.')
+          createWindow()
+        }},
         {type: 'separator'},
         {label: 'Quit', click: () => {
           console.log('Quit menu')
@@ -30,9 +34,9 @@ function createMenu() {
     {
       label: 'Edit',
       submenu: [
-        {label: 'Cut'},
-        {label: 'Copy'},
-        {label: 'Paste'}
+        {role: 'cut'},
+        {role: 'copy'},
+        {role: 'paste'}
       ]
     }
   ]
