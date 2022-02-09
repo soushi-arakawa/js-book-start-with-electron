@@ -24,9 +24,9 @@
     </div>
     <script>
     function doit() {
-        window.ipcMain.showOpenDialog().then((re) => {
-            document.querySelector('#ta').value = re
-        })
+        let data = document.querySelector('#ta').value
+        window.ipcMain.fs().writeFileSync('saved.txt', data)
+        alert('保存しました。')
     }
     </script>
 </body>
