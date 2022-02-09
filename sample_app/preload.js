@@ -5,5 +5,6 @@ contextBridge.exposeInMainWorld(
   {
     fs: () => require('fs'),
     showErrorMessage: (title, message) => ipcRenderer.invoke('showErrorMessage', title, message),
+    showOpenDialog: () => ipcRenderer.invoke('showOpenDialog')
   }
 )

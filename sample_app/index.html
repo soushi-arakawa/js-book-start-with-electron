@@ -24,16 +24,8 @@
     </div>
     <script>
     function doit() {
-        const fname = 'sample.txt'
-        const re = window.ipcMain.fs().readFile(fname, 'utf8', (err, result) => {
-            if (err) {
-                console.log(err.errno)
-                window.ipcMain.showErrorMessage('', err.message)
-                return
-            }
-            let data = result.toString()
-            document.querySelector('#ta').value = data
-            alert('テキストファイルを読み込みました。')
+        window.ipcMain.showOpenDialog().then((re) => {
+            document.querySelector('#ta').value = re
         })
     }
     </script>
