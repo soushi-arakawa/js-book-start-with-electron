@@ -20,11 +20,18 @@ class App extends React.Component {
 }
 
 class Content extends React.Component {
+  constructor() {
+    super()
+    this.title = 'Hello, Component!'
+    this.message = 'This is Sample Component'
+    this.classname = 'alert alert-warning'
+  }
+
   render() {
     return (
-      <div className="alert alert-primary">
-        <h2>Content Component</h2>
-        <p>これはContentクラスコンポーネントのサンプルです。</p>
+      <div className={this.classname}>
+        <h2>{this.title}</h2>
+        <p>{this.message}</p>
       </div>
     )
   }
