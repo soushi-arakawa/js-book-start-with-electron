@@ -22,15 +22,22 @@ class App extends React.Component {
 class Content extends React.Component {
   constructor(props) {
     super(props)
+    this.fieldvalue = ''
     this.state = {
-      flg: true
+      data: []
     }
+    this.doChange = this.doChange.bind(this)
     this.doAction = this.doAction.bind(this)
   }
 
+  doChange(e) {
+    this.fieldvalue = e.target.value
+  }
+
   doAction(e) {
+    this.state.data.push(this.fieldvalue)
     this.setState(state => ({
-      flg: !state.flg
+      data: state.data
     }))
   }
 
@@ -40,23 +47,16 @@ class Content extends React.Component {
         <div className="alert alert-primary">
           <h2>Content Component {this.state.count}</h2>
           <p>This is Content-class component!!</p>
-          {this.state.flg
-            ? <div className="alert bg-danger">
-              <h3>Sample Content</h3>
-              <p>This is Content-class Component!!</p>
-            </div>
-            : <div className="alert bg-dark">
-              <h3 className="text-light">
-              This is Other Content
-              </h3>
-              <p className="text-light">
-              this is Other Content message!!
-              </p>
-            </div>
-          }
-          <button className="btn btn-primary mt-3" onClick={this.doAction}>
-            click
-          </button>
+          <ul className="list-group">
+            {this.state.data.map((val, index) => (
+              <li key={index} className="list-group-item">{val}</li>
+            ))}
+          </ul>
+          <hr />
+          <div className="row m-0">
+            <input type="text" className="form-control col-10" onChange={this.doChange} />
+            <button className="btn btn-primary col-2" onClick={this.doAction}>click</button>
+          </div>
         </div>
       </div>
     )
