@@ -2,9 +2,11 @@
 
 
 function doit() {
-  const dbpath = 'sqlite3.db'
   window.ipcMain.createTable()
-  
+  findUsers()
+}
+
+function addUser() {
   let ta = document.querySelector('#ta')
   let data = ta.value.split(',')
   console.log(`doit() ${JSON.stringify(data)}`)
@@ -13,7 +15,14 @@ function doit() {
     ta.value = ""
     makeTable()
   })
+}
 
+function findUsers() {
+  let ta = document.querySelector('#ta')
+  window.ipcMain.findUser(ta.value).then((res) => {
+    let msg = document.querySelector('#msg')
+    msg.innerHTML = jsonToTable(res)
+  })
 }
 
 function makeTable() {
