@@ -105,3 +105,24 @@ ipcMain.handle('createTable', () => {
   db.close()
 })
 
+ipcMain.handle('addUser', async(event, name, mail, tel) => {
+  return new Promise((resolve, reject) => {
+    let db = new sqlite3.Database(dbpath)
+
+    db.serialize(() => {
+      let query = 'insert into users (name, mail, tel) values '
+      + '("' + name + '","' + mail + '","' + tel + '")'
+      console.log(`query: ${query}`)
+      db.exec(query, (stat, err) => {
+        if (!err) {
+          resolve('SUCCESS')
+        } else {
+          console.log(err)
+          reject(err)
+        }
+      })
+    })
+    db.close()
+  }) 
+  
+})
