@@ -20,18 +20,35 @@ class App extends React.Component {
 }
 
 class Content extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
+    this.flg = true
     this.title = 'Hello, Component!'
-    this.message = 'This is Sample Component'
-    this.classname = 'alert alert-warning'
+    this.state = {
+      message: 'This is Sample Component',
+      classname: 'alert alert-warning'
+    }
+    setInterval(() => {
+      if (this.flg) {
+        this.setState(() => ({
+          classname: 'alert alert-light',
+          message: 'This is light alert sample.'
+        }))
+      } else {
+        this.setState(() => ({
+          classname: 'alert alert-warning',
+          message: 'これは、warningアラートです。'
+        }))
+      }
+      this.flg = !this.flg
+    }, 1000)
   }
 
   render() {
     return (
-      <div className={this.classname}>
+      <div className={this.state.classname}>
         <h2>{this.title}</h2>
-        <p>{this.message}</p>
+        <p>{this.state.message}</p>
       </div>
     )
   }
