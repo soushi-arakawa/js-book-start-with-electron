@@ -9,5 +9,6 @@ contextBridge.exposeInMainWorld(
     showOpenDialog: () => ipcRenderer.invoke('showOpenDialog'),
     createTable: () => ipcRenderer.invoke('createTable'),
     addUser: async(name, mail, tel) => ipcRenderer.invoke('addUser', name, mail, tel),
+    findAll: async() => ipcRenderer.invoke('findAll')
   }
 )

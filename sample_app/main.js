@@ -126,3 +126,18 @@ ipcMain.handle('addUser', async(event, name, mail, tel) => {
   }) 
   
 })
+
+ipcMain.handle('findAll', async() => {
+  let query = 'select * from users'
+  return new Promise((resolve, reject) => {
+      let db = new sqlite3.Database(dbpath)
+      db.all(query, (err, rows) => {
+        if (!err) {
+          resolve(rows)
+        } else {
+          reject(err)
+        }
+      })
+      db.close()
+  })
+})
