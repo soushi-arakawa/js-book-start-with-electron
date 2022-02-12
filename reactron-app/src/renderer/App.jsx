@@ -12,7 +12,19 @@ class App extends React.Component {
         <div className="container text-primary">
           <h2>App Component</h2>
           <p>これはAppクラスコンポーネントのサンプルです。</p>
+          <Content />
         </div>
+      </div>
+    )
+  }
+}
+
+class Content extends React.Component {
+  render() {
+    return (
+      <div className="alert alert-primary">
+        <h2>Content Component</h2>
+        <p>これはContentクラスコンポーネントのサンプルです。</p>
       </div>
     )
   }
