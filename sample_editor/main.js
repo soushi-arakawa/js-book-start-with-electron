@@ -28,10 +28,32 @@ function createMenu() {
         {role: 'quit'},
       ]
     },
-    {role: 'editMenu'}
+    {role: 'editMenu'},
+    {
+      label: 'Theme',
+      submenu: [
+        {label: 'textmate',
+          click: () => { setTheme('textmate') }},
+        {label: 'chrome',
+          click: () => { setTheme('chrome') }},
+        {label: 'github',
+          click: () => { setTheme('github') }},
+        {label: 'dracula',
+          click: () => { setTheme('dracula') }},
+        {label: 'twlight',
+          click: () => { setTheme('twlight') }},
+        {label: 'pastel on dark',
+          click: () => { setTheme('pastel_on_dark') }}
+      ]
+    }
   ]
   let menu = Menu.buildFromTemplate(menu_temp)
   Menu.setApplicationMenu(menu)
+}
+
+function setTheme(theme) {
+  let w = BrowserWindow.getFocusedWindow()
+  w.webContents.executeJavaScript(`setTheme("${theme}")`)
 }
 
 createMenu()
