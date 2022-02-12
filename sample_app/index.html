@@ -22,46 +22,6 @@
             Click
         </button>
     </div>
-    <script>
-    async function doit() {
-        let url = 'https://tuyano-api.firebaseio.com/covid.json'
-        let msg = document.querySelector('#msg')
-        let https = await window.ipcMain.https()
-        https.get(url, (res) => {
-            console.log(res)
-            let data = ''
-            res.setEncoding('utf8')
-            res.on('data', ck => {
-                data += ck
-            })
-            res.on('end', res => {
-                let jsonObj = JSON.parse(data)
-                msg.innerHTML = jsonToTable(jsonObj)
-            })
-        })
-    }
-
-    function jsonToTable() {
-        let table = '<table class="table"><thead><tr><th></th>'
-        for (let ky in json) {
-            let ob = json[ky]
-            for (let ky2 in ob) {
-                table += '<th>' + ky2 + '</th>'
-            }
-            break
-        }
-        table += '</tr></thead><tbody>'
-        for (let ky in json) {
-            table += '<tr><td>' + ky + '</td>'
-            let ob = json[ky]
-            for (let ky2 in ob) {
-                table += '<td>' + ob[ky2] + '</td>'
-            }
-            table += '</tr>'
-        }
-        table += '</tbody></table>'
-        return table
-    }
-    </script>
+    <script src="./index.js"></script>
 </body>
 </html>

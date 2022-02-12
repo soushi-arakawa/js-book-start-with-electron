@@ -6,6 +6,7 @@ contextBridge.exposeInMainWorld(
     fs: () => require('fs'),
     https: () => require('https'),
     showErrorMessage: (title, message) => ipcRenderer.invoke('showErrorMessage', title, message),
-    showOpenDialog: () => ipcRenderer.invoke('showOpenDialog')
+    showOpenDialog: () => ipcRenderer.invoke('showOpenDialog'),
+    createTable: () => ipcRenderer.invoke('createTable'),
   }
 )
