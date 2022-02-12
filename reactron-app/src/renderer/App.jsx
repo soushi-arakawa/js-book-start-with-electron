@@ -23,14 +23,14 @@ class Content extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      count: 0
+      flg: true
     }
     this.doAction = this.doAction.bind(this)
   }
 
   doAction(e) {
     this.setState(state => ({
-      count: state.count + 1
+      flg: !state.flg
     }))
   }
 
@@ -38,9 +38,25 @@ class Content extends React.Component {
     return (
       <div className="container">
         <div className="alert alert-primary">
-          <h2>App Component {this.state.count}</h2>
-          <p>This is App-class component!!</p>
-          <button className="btn btn-primary" onClick={this.doAction}>click</button>
+          <h2>Content Component {this.state.count}</h2>
+          <p>This is Content-class component!!</p>
+          {this.state.flg
+            ? <div className="alert bg-danger">
+              <h3>Sample Content</h3>
+              <p>This is Content-class Component!!</p>
+            </div>
+            : <div className="alert bg-dark">
+              <h3 className="text-light">
+              This is Other Content
+              </h3>
+              <p className="text-light">
+              this is Other Content message!!
+              </p>
+            </div>
+          }
+          <button className="btn btn-primary mt-3" onClick={this.doAction}>
+            click
+          </button>
         </div>
       </div>
     )
